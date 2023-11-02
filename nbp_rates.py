@@ -30,8 +30,8 @@ def initialize():
                 exh_rates_dictionary['date'].append(date)
 
     exh_rates_df = pd.DataFrame.from_dict(exh_rates_dictionary) # create pandas DataFrame
-    exh_rates_df['eur/usd'] = exh_rates_df['eur/pln']/exh_rates_df['usd/pln']   # calculate eur/usd
-    exh_rates_df['chf/usd'] = exh_rates_df['chf/pln']/exh_rates_df['usd/pln']   # and       chf/usd
+    exh_rates_df['eur/usd'] = (exh_rates_df['eur/pln']/exh_rates_df['usd/pln']).round(4)   # calculate eur/usd
+    exh_rates_df['chf/usd'] = (exh_rates_df['chf/pln']/exh_rates_df['usd/pln']).round(4)   # and       chf/usd
     exh_rates_df.to_csv('all_currency_data.csv',index=False)    # save into a CSV file
     os.system('cls||clear')
     print('Initialized successfully!')
