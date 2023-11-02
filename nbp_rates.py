@@ -9,12 +9,8 @@ def initialize():
     start_date = end_date - timedelta(days=30)
     url = "https://api.nbp.pl/api/exchangerates/rates/a/"   # API url for retrieving exchange rates
     currencies = ['eur','usd','chf']                        # currencies to retrieve
-    exh_rates_dictionary = {
-        "date":[],
-        "eur/pln":[],
-        "usd/pln":[],
-        "chf/pln":[],
-    }
+
+    exh_rates_dictionary = {**{'date': []}, **{f'{currency}/pln': [] for currency in currencies}}
 
     for currency in currencies:
         try:    # retrieve data for currency for the last 30 days
